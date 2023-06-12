@@ -1,0 +1,39 @@
+<div *ngIf="!editValue; else editInfo">
+    <ul>{{userProfile.username}}</ul>
+    <ul>{{userProfile.email}}</ul>
+    <ul></ul>
+    <br>
+    <button (click)="editProfile()">Editar Perfil</button>
+</div>
+
+
+<ng-template #editInfo>
+<form>
+    <div>
+        <label for="">Nombre</label><br>
+        <input type="text" name="name" [(ngModel)]="userProfile.username">
+    </div>
+
+    <div>
+        <label for="">Correo</label><br>
+        <input type="email" name="email" [(ngModel)]="userProfile.email">
+    </div>
+
+    <div>
+        <label for="">Contraseña</label><br>
+        <input type="password" name="password" placeholder="Cambiar contraseña">
+    </div>
+    <div>
+        <label for="">Nueva imagen</label><br>
+        <input type="file" name="picture" (change)="onFileSelected($event)">
+    </div>
+    <br>
+    <button>
+        Guardar cambios
+    </button>
+    <button (click)="cancelUpdate()">
+        Cancelar
+    </button>
+</form>
+</ng-template>
+
